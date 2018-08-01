@@ -16,11 +16,13 @@ def isSamePerson(currentPersonPath, otherPath):
     unknown_face_encoding_arr = face_recognition.face_encodings(unknown_picture)
     if(len(unknown_face_encoding_arr) <= 0):
         return False
-    unknown_face_encoding = unknown_face_encoding_arr[0]
     
-    results = face_recognition.compare_faces([my_face_encoding], unknown_face_encoding)
-
-    return results[0] == True
+    for i in range(len(unknown_face_encoding_arr)):
+        unknown_face_encoding = unknown_face_encoding_arr[i]
+        results = face_recognition.compare_faces([my_face_encoding], unknown_face_encoding)
+        if(results[0] == True):
+            return True
+    return False
 
 def getPicsOfPersonInFolder(currentPersonPath, dirPath, callback = None):
     import os
@@ -42,7 +44,13 @@ def exportFile(pathToFile, destDir):
         
 def findAndExport(currentPersonPath, folderToSearchPath, destDirPath):
     if os.path.exists(destDirPath):
-        shutil.rmtree(destDirPath)
+        for the_file in os.listdir(destDirPath):
+            file_path = os.path.join(destDirPath, the_file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+            except Exception as e:
+                print(e)
     return getPicsOfPersonInFolder(currentPersonPath,folderToSearchPath, lambda picPath: exportFile(picPath, destDirPath))
 
     

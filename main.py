@@ -2,7 +2,8 @@ import lookforme
 import tkinter
 from tkinter import filedialog
 from tkinter import *
-
+import tkinter.messagebox
+import os
 
 def findAndExport(personToFind, folderToSearch, resultFolder):
     pics = lookforme.findAndExport(personToFind,folderToSearch, resultFolder) 
@@ -39,8 +40,9 @@ def center(win):
     win.deiconify()
 
 if __name__ == '__main__':
-    w = 700
-    h = 500
+    
+    w = 1200
+    h = 400
     wmid = w/2
 
     root = tkinter.Tk()
@@ -75,8 +77,23 @@ if __name__ == '__main__':
     lbl2 = Label(master=root,textvariable=resultFolder, bg='white')
     lbl2.grid(row=4, column=1)
     
+    def OpenResultFolder():
+        if(resultFolder and len(resultFolder.get()) > 0):
+            os.startfile(resultFolder.get())#('start "' + resultFolder.get() + '"')
+        else:
+            tkinter.messagebox.showwarning("Warning","בבקשה בחר תיקית יעד לתוצאות החיפוש")
+            
+    def search():
+        if(personToFind and folderToSearch and resultFolder and len(personToFind.get())*len(folderToSearch.get())*len(resultFolder.get()) > 0):
+            findAndExport(personToFind.get(),folderToSearch.get() , resultFolder.get())
+        else:
+            tkinter.messagebox.showwarning("Warning","בבקשה מלא את כל הפרטים")
+    
+    button_search = Button(text="    חפש    ", bg='black',fg='white' ,command=search)
+    button_search.grid(row=5, column=2)
 
-
+    button_search = Button(text="הצג את תוצאות החיפוש", bg='yellow' ,command=OpenResultFolder)
+    button_search.grid(row=6, column=2)
 
 
 
@@ -84,19 +101,3 @@ if __name__ == '__main__':
     center(root)
     root.mainloop()
 
-
-'''
-
-    Label(root, text='Look For Me', bg="Black", fg="white").grid(row=0, sticky="nsew")
-    Label(root, text="First Name").grid(row=1)
-    Label(root, text="Last Name").grid(row=2)
-
-    e1 = Entry(root)
-    e2 = Entry(root)
-    
-    e1.grid(row=1, column=1)
-    e2.grid(row=2, column=1)
-
-    Button(root, text='Quit', command=root.quit).grid(row=3, column=0, sticky=W, pady=4)
-    Button(root, text='Show', command=findAndExport).grid(row=3, column=1, sticky=W, pady=4)
-'''
