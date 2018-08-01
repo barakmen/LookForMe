@@ -1,4 +1,8 @@
 import face_recognition
+import os
+from shutil import copy
+import sys
+import shutil
 
 def isSamePerson(currentPersonPath, otherPath):
 
@@ -29,6 +33,16 @@ def getPicsOfPersonInFolder(currentPersonPath, dirPath, callback = None):
                     callback(filepath)
                 samePerson.append(os.path.abspath(filepath))
     return samePerson
-    
+
+
+def exportFile(pathToFile, destDir):
+    if not os.path.exists(destDir):
+        os.makedirs(destDir)
+    copy(pathToFile, destDir)
+        
+def findAndExport(currentPersonPath, folderToSearchPath, destDirPath):
+    if os.path.exists(destDirPath):
+        shutil.rmtree(destDirPath)
+    return getPicsOfPersonInFolder(currentPersonPath,folderToSearchPath, lambda picPath: exportFile(picPath, destDirPath))
 
     
