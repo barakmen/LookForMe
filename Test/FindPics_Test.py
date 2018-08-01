@@ -6,12 +6,12 @@ import lookforme
 
 class TestStringMethods(unittest.TestCase):
 
-    def test_upper(self):
+    def test_findpics(self):
         resourceFolder = 'TestResources'
-        pics = lookforme.getPicsOfPersonInFolder(resourceFolder + '/ubama.jpg',resourceFolder)
+        
+        #callback is optional!!!
+        pics = lookforme.getPicsOfPersonInFolder(resourceFolder + '/haim.jpg',resourceFolder, lambda picPath: print('Find : ' + picPath))
         self.assertTrue(len(pics) == 2)
-
-
 
 if __name__ == '__main__':
     unittest.main()
