@@ -1,4 +1,9 @@
 #!/bin/bash
 #chmod u+x installDependencies.sh
 
-pip3 install face_recognition
+sudo pip3 install face_recognition
+
+pip3 install pyinstaller
+
+#sudo find / -name pyinstaller
+#python3 /home/barakmen/.local/bin/pyinstaller main.py

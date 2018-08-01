@@ -11,9 +11,15 @@
 
 3. Install the Dependencies by runing the following commend from the cloned folder: `sh installDependencies.sh`
 
+## Testing
+1. from clone folder run: `cd Test`
+2. run the file: `python3 FindPics_Test.py`
+3. check if the result is OK.
 
 ## Using
 1. In order to use the "lookforme" module, puth this three line on top of your python3 file:
     `import sys`
     `sys.path.insert(0, '../')`
     `import lookforme`
+
+
