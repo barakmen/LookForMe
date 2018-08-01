@@ -1,7 +1,5 @@
 import face_recognition
 
-resourceFolder = 'TestResources'
-
 def isSamePerson(currentPersonPath, otherPath):
 
     picture_of_me = face_recognition.load_image_file(currentPersonPath)
@@ -29,4 +27,3 @@ def getPicsOfPersonInFolder(currentPersonPath, dirPath):
     return samePerson
     
 
-pics = getPicsOfPersonInFolder(resourceFolder + '/ubama.jpg',resourceFolder)
