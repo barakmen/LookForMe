@@ -7,8 +7,10 @@ import os
 
 def findAndExport(personToFind, folderToSearch, resultFolder):
     pics = lookforme.findAndExport(personToFind,folderToSearch, resultFolder) 
+    tkinter.messagebox.showwarning("Warning"," החיפוש הסתיים, נמצאו " + str(len(pics)) + ' תוצאות')
     print(pics)
     print('Done!')
+    
 
 def browse_resultFolder_dir_button():
     global resultFolder
@@ -42,7 +44,7 @@ def center(win):
 if __name__ == '__main__':
     
     w = 1200
-    h = 400
+    h = 250
     wmid = w/2
 
     root = tkinter.Tk()
