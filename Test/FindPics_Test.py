@@ -11,12 +11,12 @@ class TestStringMethods(unittest.TestCase):
         #callback is optional!!!
         pics = lookforme.getPicsOfPersonInFolder(resourceFolder + '/ubama.jpg',resourceFolder, lambda picPath: print('Find : ' + picPath))
         self.assertTrue(len(pics) == 3)
-    '''
+    
     def test_copyfiles(self):
         folderToSearch = 'TestResources'
         resultFolder = 'resultFolder'
         pics = lookforme.findAndExport(folderToSearch + '/ubama.jpg',folderToSearch, resultFolder)        
         self.assertTrue(os.path.isdir(resultFolder))
-    '''
+    
 if __name__ == '__main__':
     unittest.main()

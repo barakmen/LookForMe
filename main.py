@@ -28,6 +28,8 @@ def browse_personToFind_dir_button():
     filename = filedialog.askopenfilename()
     personToFind.set(filename)
 
+
+
 def center(win):
     win.update_idletasks()
     width = win.winfo_width()
@@ -84,7 +86,8 @@ if __name__ == '__main__':
             os.startfile(resultFolder.get())#('start "' + resultFolder.get() + '"')
         else:
             tkinter.messagebox.showwarning("Warning","בבקשה בחר תיקית יעד לתוצאות החיפוש")
-            
+        
+
     def search():
         if(personToFind and folderToSearch and resultFolder and len(personToFind.get())*len(folderToSearch.get())*len(resultFolder.get()) > 0):
             findAndExport(personToFind.get(),folderToSearch.get() , resultFolder.get())
@@ -94,10 +97,11 @@ if __name__ == '__main__':
     button_search = Button(text="    חפש    ", bg='black',fg='white' ,command=search)
     button_search.grid(row=5, column=2)
 
-    button_search = Button(text="הצג את תוצאות החיפוש", bg='yellow' ,command=OpenResultFolder)
-    button_search.grid(row=6, column=2)
+    button_search_res = Button(text="הצג את תוצאות החיפוש", bg='yellow' ,command=OpenResultFolder)
+    button_search_res.grid(row=6, column=2)
 
-
+    button_search_trash = Button(text="הצג את סל המחזור", bg='gray' ,command=lambda:lookforme.OpenTrashFolder())
+    button_search_trash.grid(row=7, column=2)
 
 
     center(root)

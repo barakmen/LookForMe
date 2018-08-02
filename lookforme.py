@@ -3,6 +3,9 @@ import os
 from shutil import copy
 import sys
 import shutil
+import calendar
+import time
+import glob
 
 def isSamePerson(currentPersonPath, otherPath):
 
@@ -41,16 +44,42 @@ def exportFile(pathToFile, destDir):
     if not os.path.exists(destDir):
         os.makedirs(destDir)
     copy(pathToFile, destDir)
-        
-def findAndExport(currentPersonPath, folderToSearchPath, destDirPath):
-    if os.path.exists(destDirPath):
-        for the_file in os.listdir(destDirPath):
-            file_path = os.path.join(destDirPath, the_file)
+
+
+def deleteFilesFromDir(dirPath):
+    if os.path.exists(dirPath):
+        for the_file in os.listdir(dirPath):
+            file_path = os.path.join(dirPath, the_file)
             try:
                 if os.path.isfile(file_path):
                     os.unlink(file_path)
             except Exception as e:
                 print(e)
+
+def moveFilesToDir(fromDir, toDir):
+    
+    ts = calendar.timegm(time.gmtime())
+    if not os.path.exists(toDir):
+        os.makedirs(toDir)
+
+    newdest = toDir + '/' + str(ts)
+    if not os.path.exists(newdest):
+        os.makedirs(newdest)
+
+    for file in glob.glob(fromDir+"\\*"):
+        shutil.copy2(file, newdest);
+    
+
+
+def findAndExport(currentPersonPath, folderToSearchPath, destDirPath):
+    moveFilesToDir(destDirPath, 'trash')
+    deleteFilesFromDir(destDirPath)
     return getPicsOfPersonInFolder(currentPersonPath,folderToSearchPath, lambda picPath: exportFile(picPath, destDirPath))
 
-    
+
+def OpenTrashFolder():
+    toDir = 'trash'
+    if not os.path.exists(toDir):
+        os.makedirs(toDir)
+    os.startfile(toDir)
+
