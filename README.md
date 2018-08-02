@@ -1,5 +1,5 @@
 # LookForMe
-![Look At Me Screen Shoot]()
+![Look At Me Screen Shoot](https://github.com/barakmen/LookForMe/blob/master/LookAtMe.PNG)
 ## Installation
 1. install python3 by download it from [here](https://www.python.org/getit/)
 2. install pip3 by run the commend: `sudo apt install python3-pip`
