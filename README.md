@@ -16,10 +16,11 @@
 2. run the file: `python3 FindPics_Test.py`
 3. check if the result is OK.
 
-## Using
+## Using - For Developers
 1. In order to use the "lookforme" module, puth this three line on top of your python3 file:
-    `import sys`
-    `sys.path.insert(0, '../')`
     `import lookforme`
+
+## Using - For Users
+1. run the next commend in the clone folder: `python3 main.py` 
 
 
