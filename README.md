@@ -1,5 +1,5 @@
 # LookForMe
-
+![Look At Me Screen Shoot](https://drive.google.com/file/d/1oaBLVuIysAIRzEIUhU3JPg2yP_aezL4H/view?usp=sharing)
 ## Installation
 1. install python3 by download it from [here](https://www.python.org/getit/)
 2. install pip3 by run the commend: `sudo apt install python3-pip`
